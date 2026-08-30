@@ -60,11 +60,10 @@ function clickGem(event) {
     game.gems += power;
     game.totalGemsEarned += power;
     
-    // Spawn floating number animation at click position
     if (event) {
         let clientX = event.clientX || (event.touches ? event.touches[0].clientX : window.innerWidth / 2);
         let clientY = event.clientY || (event.touches ? event.touches[0].clientY : window.innerHeight / 2);
-        showFloatingNumber(Math.floor(power), clientX, clientY);
+        showFloatingNumber(Math.floor(power), clientX, clientY, 'click');
     }
 
     if (Math.random() < 0.2) game.shards += 1;
@@ -155,6 +154,8 @@ function checkAchievements() {
 }
 
 let lastTick = Date.now();
+let autoSpawnTimer = 0;
+
 function gameLoop() {
     const now = Date.now();
     const delta = (now - lastTick) / 1000;
@@ -166,6 +167,18 @@ function gameLoop() {
     let passiveYield = game.cps * delta * timeMultiplier;
     game.gems += passiveYield;
     game.totalGemsEarned += passiveYield;
+
+    // Trigger automatic passive floating popups if factories are running
+    if (game.cps > 0) {
+        autoSpawnTimer += delta;
+        if (autoSpawnTimer >= 1.2) {
+            autoSpawnTimer = 0;
+            let tickGain = Math.floor(game.cps * 1.2);
+            if (tickGain > 0) {
+                showAutoFloatingNumber(tickGain);
+            }
+        }
+    }
 
     let factoryCount = game.upgrades.reduce((acc, u) => acc + u.count, 0);
     if (factoryCount > 0) {
