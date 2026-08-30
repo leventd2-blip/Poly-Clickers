@@ -69,7 +69,7 @@ function triggerRebirth() {
     game.totalGemsEarned = 0;
     game.upgrades.forEach(u => {
         u.count = 0;
-        u.cost = Math.floor(u.cost / Math.pow(u.costMultiplier, u.count)); // reset cost approx
+        u.cost = Math.floor(u.cost / Math.pow(u.costMultiplier, u.count));
     });
     recalculateCPS();
 }
