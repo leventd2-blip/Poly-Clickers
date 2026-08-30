@@ -10,7 +10,15 @@ const prestigeBtn = document.getElementById('prestige-btn');
 const buffBtn = document.getElementById('buff-btn');
 const critPopup = document.getElementById('crit-popup');
 
+// Standard mouse click
 clickBtn.addEventListener('click', clickGem);
+
+// iPad/Mobile fast touch handler to completely block zoom gestures
+clickBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    clickGem();
+}, { passive: false });
+
 prestigeBtn.addEventListener('click', triggerRebirth);
 buffBtn.addEventListener('click', activateBuff);
 
@@ -72,14 +80,12 @@ function updateUI() {
     crystalCountEl.textContent = game.prestigeCrystals;
     crystalBoostEl.textContent = game.prestigeCrystals * 10;
 
-    // Determine Rank Title
     let currentRank = game.ranks[0].name;
     for (let r of game.ranks) {
         if (game.totalGemsEarned >= r.threshold) currentRank = r.name;
     }
     rankTitleEl.textContent = currentRank;
 
-    // Prestige requirement check (Req: 10,000 total lifetime gems)
     if (game.totalGemsEarned >= 10000) {
         prestigeBtn.classList.remove('disabled');
         prestigeBtn.removeAttribute('disabled');
@@ -88,7 +94,6 @@ function updateUI() {
         prestigeBtn.setAttribute('disabled', 'true');
     }
 
-    // Buff Button text update
     if (game.buffActive) {
         buffBtn.textContent = `Boost Active (${Math.ceil(game.buffTimer)}s)`;
         buffBtn.classList.add('disabled');
@@ -97,7 +102,6 @@ function updateUI() {
         buffBtn.classList.remove('disabled');
     }
 
-    // Shop Item affordability toggle
     game.upgrades.forEach(upgrade => {
         const costEl = document.getElementById(`cost-${upgrade.id}`);
         const countEl = document.getElementById(`count-${upgrade.id}`);
