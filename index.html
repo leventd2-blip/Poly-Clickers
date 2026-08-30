@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low Poly Clicker Deluxe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-container">
+        <!-- Header / Stats Panel -->
+        <header class="ui-panel score-panel">
+            <h1>Poly Clicker</h1>
+            <div class="rank-display">Rank: <span id="rank-title">Novice Miner</span></div>
+            <div class="score-display">
+                <span id="gem-count">0</span> Gems
+            </div>
+            <div class="cps-display">
+                Per Second: <span id="cps-count">0</span>
+            </div>
+            <button id="buff-btn" class="action-sub-btn">Activate Boost (15s)</button>
+        </header>
+
+        <!-- Main Clicker Area -->
+        <main class="ui-panel clicker-panel">
+            <div class="poly-button-container">
+                <button id="click-btn" class="low-poly-gem">
+                    <div class="gem-face top"></div>
+                    <div class="gem-face left"></div>
+                    <div class="gem-face right"></div>
+                </button>
+            </div>
+            <div id="crit-popup" class="crit-popup hidden">CRIT! +5x</div>
+            
+            <div class="prestige-section">
+                <h3>Prestige System</h3>
+                <p>Crystals: <span id="crystal-count">0</span> (+<span id="crystal-boost">0</span>% Boost)</p>
+                <button id="prestige-btn" class="action-sub-btn disabled" disabled>Rebirth (Req: 10,000 Gems)</button>
+            </div>
+        </main>
+
+        <!-- Shop & Tabs Panel -->
+        <aside class="ui-panel shop-panel">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('shop')">Upgrades</button>
+                <button class="tab-btn" onclick="switchTab('achievements')">Badges</button>
+            </div>
+            
+            <div id="shop-tab" class="tab-content">
+                <div id="shop-container" class="shop-list"></div>
+            </div>
+
+            <div id="achievements-tab" class="tab-content hidden">
+                <div id="achievements-container" class="shop-list"></div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="game.js"></script>
+    <script src="ui.js"></script>
+    <script src="save.js"></script>
+</body>
+</html>
