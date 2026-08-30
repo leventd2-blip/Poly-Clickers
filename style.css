@@ -95,6 +95,7 @@ button, .shop-item, #click-btn {
     background-color: #ffb703;
     flex: 1.2;
     position: relative;
+    overflow: hidden; /* Keeps floating numbers contained nicely */
 }
 
 .poly-button-container {
@@ -254,6 +255,33 @@ button, .shop-item, #click-btn {
     box-shadow: 3px 3px 0px #0f101a;
     z-index: 1000;
     pointer-events: none;
+}
+
+/* Floating click number animation styles */
+.floating-number {
+    position: absolute;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    text-shadow: 1px 1px 0px #000;
+    pointer-events: none;
+    animation: floatUpFade 0.7s ease-out forwards;
+    z-index: 50;
+}
+
+@keyframes floatUpFade {
+    0% {
+        opacity: 0;
+        transform: translateY(0px) scale(0.6);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(-15px) scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-45px) scale(1);
+    }
 }
 
 @media (max-width: 900px) {
