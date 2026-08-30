@@ -43,7 +43,7 @@ const game = {
     ]
 };
 
-function clickGem() {
+function clickGem(event) {
     let shardMultiplier = 1 + (game.refineryUpgrades[0].count * 0.25);
     let fluxMultiplier = Math.pow(2, game.refineryUpgrades[1].count);
     let relicMult = 1 + (game.relics[0].count * 0.5);
@@ -60,6 +60,13 @@ function clickGem() {
     game.gems += power;
     game.totalGemsEarned += power;
     
+    // Spawn floating number animation at click position
+    if (event) {
+        let clientX = event.clientX || (event.touches ? event.touches[0].clientX : window.innerWidth / 2);
+        let clientY = event.clientY || (event.touches ? event.touches[0].clientY : window.innerHeight / 2);
+        showFloatingNumber(Math.floor(power), clientX, clientY);
+    }
+
     if (Math.random() < 0.2) game.shards += 1;
     checkAchievements();
 }
