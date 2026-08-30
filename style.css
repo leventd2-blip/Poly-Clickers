@@ -15,6 +15,16 @@ body {
     width: 100vw;
     overflow: auto;
     padding: 10px;
+    touch-action: manipulation;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent double-tap zoom and text selection highlights on interactive buttons for iOS/iPad */
+button, .shop-item, #click-btn {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
 }
 
 .game-container {
