@@ -3,6 +3,7 @@ const shardCountEl = document.getElementById('shard-count');
 const fluxCountEl = document.getElementById('flux-count');
 const cpsCountEl = document.getElementById('cps-count');
 const clickBtn = document.getElementById('click-btn');
+const clickerPanel = document.querySelector('.clicker-panel');
 const shopContainer = document.getElementById('shop-container');
 const refineryContainer = document.getElementById('refinery-container');
 const relicsContainer = document.getElementById('relics-container');
@@ -15,14 +16,33 @@ const buffBtn = document.getElementById('buff-btn');
 const critPopup = document.getElementById('crit-popup');
 const playtimeDisplayEl = document.getElementById('playtime-display');
 
-clickBtn.addEventListener('click', clickGem);
+clickBtn.addEventListener('click', (e) => clickGem(e));
 clickBtn.addEventListener('touchstart', (e) => {
     e.preventDefault();
-    clickGem();
+    clickGem(e);
 }, { passive: false });
 
 prestigeBtn.addEventListener('click', triggerRebirth);
 buffBtn.addEventListener('click', activateBuff);
+
+function showFloatingNumber(amount, clientX, clientY) {
+    const el = document.createElement('div');
+    el.classList.add('floating-number');
+    el.textContent = `+${amount.toLocaleString()}`;
+    
+    // Position relative to clicker panel container
+    const rect = clickerPanel.getBoundingClientRect();
+    let x = clientX - rect.left + (Math.random() * 30 - 15);
+    let y = clientY - rect.top - 10;
+    
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    
+    clickerPanel.appendChild(el);
+    setTimeout(() => {
+        el.remove();
+    }, 700);
+}
 
 function switchTab(tabName) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
