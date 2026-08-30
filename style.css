@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Fredoka', sans-serif;
-    background-color: #2b2d42;
+    background-color: #1a1b2f;
     color: #edf2f4;
     display: flex;
     justify-content: center;
@@ -19,7 +19,6 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-/* Prevent double-tap zoom and text selection highlights on interactive buttons for iOS/iPad */
 button, .shop-item, #click-btn {
     touch-action: manipulation;
     -webkit-user-select: none;
@@ -33,40 +32,49 @@ button, .shop-item, #click-btn {
     justify-content: center;
     align-items: stretch;
     gap: 15px;
-    max-width: 1120px;
+    max-width: 1180px;
     width: 100%;
     height: auto;
     max-height: 95vh;
 }
 
 .ui-panel {
-    background-color: #8d99ae;
-    border: 4px solid #2b2d42;
+    background-color: #3f3d56;
+    border: 4px solid #1a1b2f;
     border-radius: 12px;
-    box-shadow: 5px 5px 0px #1a1b29;
+    box-shadow: 5px 5px 0px #0f101a;
     padding: 15px;
     display: flex;
     flex-direction: column;
     flex: 1;
-    min-width: 280px;
+    min-width: 290px;
 }
 
 .score-panel {
     align-items: center;
     justify-content: space-between;
-    background-color: #ef476f;
+    background-color: #e63946;
 }
 
 .score-panel h1 {
     font-size: 1.5rem;
-    text-shadow: 2px 2px 0px #b7094c;
+    text-shadow: 2px 2px 0px #9b2226;
 }
 
 .rank-display {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     background: rgba(0,0,0,0.2);
     padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.currency-row {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    background: rgba(0,0,0,0.15);
+    padding: 4px 10px;
     border-radius: 6px;
 }
 
@@ -76,7 +84,7 @@ button, .shop-item, #click-btn {
     background: rgba(0, 0, 0, 0.15);
     padding: 6px 12px;
     border-radius: 8px;
-    border: 2px solid #b7094c;
+    border: 2px solid #9b2226;
     width: 100%;
     text-align: center;
 }
@@ -84,7 +92,7 @@ button, .shop-item, #click-btn {
 .clicker-panel {
     align-items: center;
     justify-content: space-between;
-    background-color: #ffd166;
+    background-color: #ffb703;
     flex: 1.2;
     position: relative;
 }
@@ -125,13 +133,13 @@ button, .shop-item, #click-btn {
     border-right: 65px solid transparent;
 }
 
-.gem-face.top { border-bottom: 75px solid #06d6a0; top: 0; left: 0; }
-.gem-face.left { border-bottom: 75px solid #118ab2; transform: rotate(-60deg); top: 38px; left: -16px; }
-.gem-face.right { border-bottom: 75px solid #073b4c; transform: rotate(60deg); top: 38px; left: 16px; }
+.gem-face.top { border-bottom: 75px solid #219ebc; top: 0; left: 0; }
+.gem-face.left { border-bottom: 75px solid #023047; transform: rotate(-60deg); top: 38px; left: -16px; }
+.gem-face.right { border-bottom: 75px solid #8ecae6; transform: rotate(60deg); top: 38px; left: 16px; }
 
 .crit-popup {
     position: absolute;
-    color: #ff0054;
+    color: #fb8500;
     font-weight: 700;
     font-size: 1.2rem;
     pointer-events: none;
@@ -146,7 +154,7 @@ button, .shop-item, #click-btn {
 
 .prestige-section {
     background: rgba(0,0,0,0.15);
-    border: 2px solid #073b4c;
+    border: 2px solid #023047;
     border-radius: 8px;
     padding: 10px;
     width: 100%;
@@ -157,8 +165,8 @@ button, .shop-item, #click-btn {
 .prestige-section h3 { margin-bottom: 4px; font-size: 1rem; }
 
 .action-sub-btn {
-    background-color: #06d6a0;
-    border: 2px solid #073b4c;
+    background-color: #219ebc;
+    border: 2px solid #023047;
     border-radius: 6px;
     padding: 6px 10px;
     font-family: 'Fredoka', sans-serif;
@@ -166,35 +174,37 @@ button, .shop-item, #click-btn {
     cursor: pointer;
     margin-top: 6px;
     width: 100%;
-    color: #073b4c;
+    color: #fff;
 }
 
-.action-sub-btn:hover { background-color: #118ab2; color: #fff; }
-.action-sub-btn.disabled { opacity: 0.5; cursor: not-allowed; background-color: #777; color: #ccc; }
+.action-sub-btn:hover { background-color: #8ecae6; color: #023047; }
+.action-sub-btn.disabled { opacity: 0.5; cursor: not-allowed; background-color: #555; color: #ccc; }
 
 .shop-panel {
-    background-color: #073b4c;
+    background-color: #023047;
 }
 
 .tab-buttons {
     display: flex;
-    gap: 5px;
+    gap: 3px;
     margin-bottom: 10px;
 }
 
 .tab-btn {
     flex: 1;
-    background: #118ab2;
-    border: 2px solid #06d6a0;
+    background: #219ebc;
+    border: 2px solid #8ecae6;
     color: #fff;
-    padding: 6px;
+    padding: 5px 2px;
     border-radius: 6px;
     cursor: pointer;
     font-family: 'Fredoka', sans-serif;
     font-weight: 600;
+    font-size: 0.75rem;
+    text-align: center;
 }
 
-.tab-btn.active { background: #06d6a0; color: #073b4c; }
+.tab-btn.active { background: #8ecae6; color: #023047; }
 
 .shop-list {
     overflow-y: auto;
@@ -205,9 +215,18 @@ button, .shop-item, #click-btn {
     padding-right: 4px;
 }
 
+.refinery-intro {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    padding: 5px;
+    border-radius: 4px;
+}
+
 .shop-item {
-    background-color: #118ab2;
-    border: 3px solid #06d6a0;
+    background-color: #219ebc;
+    border: 3px solid #8ecae6;
     border-radius: 8px;
     padding: 8px 10px;
     display: flex;
@@ -216,10 +235,26 @@ button, .shop-item, #click-btn {
     cursor: pointer;
 }
 
-.shop-item:hover { background-color: #06d6a0; color: #073b4c; }
-.shop-item.disabled { opacity: 0.5; cursor: not-allowed; background-color: #555; border-color: #333; }
+.shop-item:hover { background-color: #8ecae6; color: #023047; }
+.shop-item.disabled { opacity: 0.5; cursor: not-allowed; background-color: #444; border-color: #222; }
 .shop-item-info { display: flex; justify-content: space-between; font-weight: 700; font-size: 0.9rem; }
 .hidden { display: none; }
+
+.playtime-hud {
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    background-color: rgba(26, 27, 47, 0.9);
+    border: 2px solid #219ebc;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #8ecae6;
+    box-shadow: 3px 3px 0px #0f101a;
+    z-index: 1000;
+    pointer-events: none;
+}
 
 @media (max-width: 900px) {
     .game-container { flex-direction: column; align-items: center; max-height: none; overflow-y: auto; }
