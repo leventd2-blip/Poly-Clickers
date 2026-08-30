@@ -30,7 +30,6 @@ function showFloatingNumber(amount, clientX, clientY) {
     el.classList.add('floating-number');
     el.textContent = `+${amount.toLocaleString()}`;
     
-    // Position relative to clicker panel container
     const rect = clickerPanel.getBoundingClientRect();
     let x = clientX - rect.left + (Math.random() * 30 - 15);
     let y = clientY - rect.top - 10;
@@ -42,6 +41,24 @@ function showFloatingNumber(amount, clientX, clientY) {
     setTimeout(() => {
         el.remove();
     }, 700);
+}
+
+function showAutoFloatingNumber(amount) {
+    const el = document.createElement('div');
+    el.classList.add('floating-number', 'auto-floating');
+    el.textContent = `+${amount.toLocaleString()} ⚡`;
+    
+    const rect = clickerPanel.getBoundingClientRect();
+    let x = (rect.width / 2) + (Math.random() * 80 - 40);
+    let y = rect.height * 0.7;
+    
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    
+    clickerPanel.appendChild(el);
+    setTimeout(() => {
+        el.remove();
+    }, 900);
 }
 
 function switchTab(tabName) {
